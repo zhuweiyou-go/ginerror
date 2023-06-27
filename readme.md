@@ -15,10 +15,10 @@ import (
 func main() {
 	r := gin.Default()
 	// default
-	r.Use(Handler())
+	r.Use(ginerror.Handler())
 
 	// or custom
-	r.Use(Handler(func(err *gin.Error) any {
+	r.Use(ginerror.Handler(func(err *gin.Error) any {
 		return gin.H{"error": err.Error()}
 	}))
 }
